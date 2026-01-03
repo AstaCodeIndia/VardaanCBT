@@ -1,13 +1,15 @@
-// backend/config/database.js
+// backend/config/database.js - SUPABASE VERSION
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize({
+// Option 1: Using DATABASE_URL (Recommended for Supabase)
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'vardaancbt',
-  username: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false // Required for Supabase
+    }
+  },
   logging: false,
   pool: {
     max: 5,
@@ -16,5 +18,10 @@ const sequelize = new Sequelize({
     idle: 10000
   }
 });
+
+// Test connection
+sequelize.authenticate()
+  .then(() => console.log('✅ Supabase database connected successfully'))
+  .catch(err => console.error('❌ Unable to connect to Supabase database:', err.message));
 
 module.exports = { sequelize };

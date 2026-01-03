@@ -1,7 +1,8 @@
-// backend/server.js
+// backend/server.js - SUPABASE VERSION
+require('dotenv').config(); // Load environment variables FIRST
+
 const express = require('express');
 const cors = require('cors');
-const multer = require('multer');
 const path = require('path');
 const { sequelize } = require('./config/database');
 const authRoutes = require('./routes/auth');
@@ -24,17 +25,30 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/student', studentRoutes);
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', message: 'VardaanCBT API is running' });
+});
+
 // Database sync and server start
 const startServer = async () => {
   try {
+    // Test database connection
+    await sequelize.authenticate();
+    console.log('✅ Connected to Supabase database');
+    
+    // Sync models with database (creates tables if they don't exist)
     await sequelize.sync({ alter: true });
-    console.log('✅ Database synced successfully');
+    console.log('✅ Database tables synced successfully');
     
     app.listen(PORT, () => {
-      console.log(`🚀 VardaanCBT Server running on port ${PORT}`);
+      console.log(`🚀 VardaanCBT Server running on http://localhost:${PORT}`);
+      console.log(`📊 Using Supabase database`);
+      console.log(`🔗 API Health: http://localhost:${PORT}/health`);
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('❌ Failed to start server:', error.message);
+    console.error('💡 Check your .env file and Supabase credentials');
     process.exit(1);
   }
 };
