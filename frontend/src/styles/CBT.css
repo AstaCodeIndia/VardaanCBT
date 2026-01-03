@@ -1,0 +1,264 @@
+/* frontend/src/styles/CBT.css */
+.cbt-interface {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+}
+
+.cbt-header {
+  background: #2c3e50;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.header-left h1 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.user-name {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.timer {
+  font-size: 28px;
+  font-weight: bold;
+  background: rgba(255,255,255,0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.cbt-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.question-palette {
+  width: 280px;
+  background: white;
+  border-right: 2px solid #e0e0e0;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.question-palette h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.palette-btn {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.palette-btn:hover {
+  transform: scale(1.05);
+}
+
+.palette-btn.current {
+  box-shadow: 0 0 0 3px #667eea;
+}
+
+.palette-btn.not-visited {
+  background: #ecf0f1;
+  color: #7f8c8d;
+}
+
+.palette-btn.visited {
+  background: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.palette-btn.answered {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.palette-btn.marked {
+  background: #e7e3ff;
+  border-color: #667eea;
+  color: #5a67d8;
+}
+
+.palette-btn.marked-answered {
+  background: #b8daff;
+  border-color: #007bff;
+  color: #004085;
+}
+
+.palette-legend {
+  border-top: 2px solid #e0e0e0;
+  padding-top: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.legend-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 10px;
+  border: 2px solid #ddd;
+}
+
+.question-area {
+  flex: 1;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.question-header {
+  padding: 20px 30px;
+  background: #f8f9fa;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.question-header h2 {
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.question-content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.question-snapshot {
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.options-container {
+  padding: 20px 30px;
+  background: #f8f9fa;
+  border-top: 2px solid #e0e0e0;
+}
+
+.option-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.option-buttons .option-btn {
+  width: 80px;
+  height: 80px;
+  font-size: 32px;
+  font-weight: bold;
+  border: 3px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.option-buttons .option-btn:hover {
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+.option-buttons .option-btn.selected {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.navigation-buttons {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background: white;
+  border-top: 2px solid #e0e0e0;
+}
+
+.navigation-buttons button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.navigation-buttons .btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.navigation-buttons .btn-secondary:hover {
+  background: #5a6268;
+}
+
+.navigation-buttons .btn-primary {
+  background: #28a745;
+  color: white;
+}
+
+.navigation-buttons .btn-primary:hover {
+  background: #218838;
+}
+
+.submit-section {
+  padding: 20px 30px;
+  text-align: center;
+  background: #fff3cd;
+  border-top: 2px solid #ffc107;
+}
+
+.btn-submit {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-submit:hover {
+  background: #c82333;
+  transform: scale(1.05);
+}
